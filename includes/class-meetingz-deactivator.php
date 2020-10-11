@@ -25,7 +25,8 @@ class Meetingz_Deactivator {
 	 * Placeholder for deactivating plugin.
 	 */
 	public static function deactivate() {
-
+        flush_rewrite_rules();
+        wp_cache_delete( 'alloptions', 'options' );
 	}
 
 }

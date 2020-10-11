@@ -31,6 +31,9 @@ class Meetingz_Activator {
 	 */
 	public static function activate() {
 		self::set_default_roles();
+
+        flush_rewrite_rules();
+        wp_cache_delete( 'alloptions', 'options' );
 	}
 
 	/**
