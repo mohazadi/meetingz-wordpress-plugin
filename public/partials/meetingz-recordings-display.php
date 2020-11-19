@@ -5,9 +5,9 @@
 		<p id="mtz-no-recordings-msg" style="display:none;"><?php esc_html_e( 'This room does not currently have any recordings.', 'meetingz' ); ?></p>
 		<div id="mtz-recordings-table" class="mtz-table-container" role="table">
 			<div class="mtz-flex-table mtz-flex-table-<?php echo $columns; ?> mtz-header" role="rowgroup">
-				<div class="flex-row flex-row-<?php echo $columns; ?> first" role="columnheader"><?php esc_html_e( 'Meeting', 'meetingz' ); ?></div>
+				<div class="flex-row flex-row-<?php echo $columns; ?> first" role="columnheader">مدت / تعداد کاربران</div>
 				<a href="<?php echo $sort_fields['name']->url; ?>" class="flex-row flex-row-<?php echo $columns; ?> <?php echo $sort_fields['name']->header_classes; ?>" role="columnheader">
-					<?php esc_html_e( 'Recording', 'meetingz' ); ?>
+					<?php esc_html_e( 'Meeting', 'meetingz' ); ?>
 					<i class="<?php echo $sort_fields['name']->classes; ?>"></i>
 				</a>
 				<a href="<?php echo $sort_fields['description']->url; ?>" class="flex-row flex-row-<?php echo $columns; ?> <?php echo $sort_fields['description']->header_classes; ?>" role="columnheader">
@@ -18,7 +18,7 @@
 					<?php esc_html_e( 'Date' ); ?>
 					<i class="<?php echo $sort_fields['date']->classes; ?>"></i>
 				</a>
-				<div class="flex-row flex-row-<?php echo $columns; ?>" role="columnheader"><?php esc_html_e( 'Link' ); ?></div>
+				<div class="flex-row flex-row-<?php echo $columns; ?>" role="columnheader"><?php esc_html_e( 'Recording', 'meetingz' ); ?></div>
 				<?php if ( $manage_mtz_recordings ) { ?>
 					<div class="flex-row flex-row-<?php echo $columns; ?>" role="columnheader">
 						<?php esc_html_e( 'Manage', 'meetingz' ); ?>

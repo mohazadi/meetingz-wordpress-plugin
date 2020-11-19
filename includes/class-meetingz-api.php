@@ -207,7 +207,8 @@ class Meetingz_Api {
         foreach ($list as $day => $sess){
             $sess = (object)$sess;
             $sess->recordID = $sess->id;
-            $sess->metadata->{'recording-name'} = $sess->realDurationStr . " ({$sess->userCount} نفر)";
+            $sess->metadata->{'recording-name'} = $sess->name ?? '-';
+            $sess->name = $sess->realDurationStr . " ({$sess->userCount} نفر)";
             $sess->metadata->{'recording-description'} = $sess->comment;
             $sess->startTime = userdate( strtotime($sess->started_at.' GMT'), 'Y-m-d  H:i:s');;
             $sess->endTime = userdate( strtotime($sess->ended_at.' GMT'), 'Y-m-d  H:i:s');;
