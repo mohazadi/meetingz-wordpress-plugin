@@ -80,3 +80,13 @@ function run_meetingz() {
 
 }
 run_meetingz();
+
+
+function userdate($time, $format) {
+    $tz = date_default_timezone_get();
+    date_default_timezone_set('Asia/Tehran');
+    $fday = date_i18n( $format, $time);
+    date_default_timezone_set($tz);
+
+    return $fday;
+}

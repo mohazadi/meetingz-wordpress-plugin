@@ -55,14 +55,17 @@
 						<?php } ?>
 					</div>
 					<div class="flex-row flex-row-<?php echo $columns; ?>" role="cell">
-						<?php echo date_i18n( $date_format, (int) $recording->startTime / 1000 ); ?>
+						<?php echo $recording->startTime; ?>
 					</div>
 					<div class="flex-row flex-row-<?php echo $columns; ?>" role="cell">
 						<div id="mtz-recording-links-block-<?php echo $recording->recordID; ?>" class="mtz-recording-link-block" style="<?php echo ( $recording->published == 'false' ? 'display:none;' : '' ); ?>">
 							<?php foreach ( $recording->playback->format as $format ) { ?>
 								<?php if ( $format->type == $default_mtz_recording_format || $view_extended_recording_formats ) { ?>
 									<div class="mtz-recording-link">
-										<a href="<?php echo $format->url; ?>"><?php esc_html_e( ucfirst( $format->type ), 'meetingz' ); ?></a>
+										<a target="_blank" href="<?php echo $format->url; ?>">ضبط ابری</a>
+									</div>
+                                    <div class="mtz-recording-link">
+										<a target="_blank" href="<?php echo $format->url0; ?>">ضبط عادی</a>
 									</div>
 								<?php } ?>
 							<?php } ?>

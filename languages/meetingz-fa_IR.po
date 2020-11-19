@@ -17,13 +17,13 @@ msgstr ""
 
 # Admin server settings
 msgid "Rooms"
-msgstr "Rooms"
+msgstr "میتینگـ.ز"
 
 msgid "Room Settings"
-msgstr "Room Settings"
+msgstr "تنظیمات اتاق"
 
 msgid "Server"
-msgstr "Server"
+msgstr "سرور"
 
 msgid "The server settings explanation."
 msgstr ""
@@ -31,13 +31,13 @@ msgstr ""
 "sessions."
 
 msgid "EndPoint"
-msgstr "EndPoint"
+msgstr "آدرس API"
 
 msgid "Shared Secret"
-msgstr "Shared Secret"
+msgstr "کلید API"
 
 msgid "Example"
-msgstr "Example"
+msgstr "مثال"
 
 msgid "Default server settings 1. Default server settings 2."
 msgstr ""
@@ -46,135 +46,134 @@ msgstr ""
 "better suited for production."
 
 msgid "Save server settings success message."
-msgstr "Success! Your room server settings have been saved."
+msgstr "تبریک! تنظیمات با موفقیت ذخیره شد."
 
 msgid "Save server settings bad url error message."
-msgstr "Error: the URL you have entered must end with '/'."
+msgstr "خطا: توجه کنید که انتهای آدرس باید علامت '/' باشد."
 
 msgid "Save server settings bad server settings error message."
 msgstr ""
-"Error: The server cannot be reached. Are you sure the server is running and your settings "
-"are correct?"
+"خطا: اتصال به سرور میسر نمی‌باشد. آیا از تنظیمات خود مطمئن هستید؟ "
 
 # Admin Room settings
 msgid "Add New"
-msgstr "Add New"
+msgstr "افزودن"
 
 msgid "Add New Room"
-msgstr "Add New Room"
+msgstr "افزودن اتاق"
 
 msgid "Edit Room"
-msgstr "Edit Room"
+msgstr "ویرایش اتاق"
 
 msgid "View Room"
-msgstr "View Room"
+msgstr "مشاهده اتاق"
 
 msgid "View Rooms"
-msgstr "View Rooms"
+msgstr "مشاهده اتاق‌ها"
 
 msgid "Search Rooms"
-msgstr "Search Rooms"
+msgstr "جستجوی اتاق‌ها"
 
 msgid "No rooms found"
-msgstr "No rooms found"
+msgstr "هیچ اتاقی یافت نشد"
 
 msgid "No rooms found in trash"
-msgstr "No rooms found in trash"
+msgstr "هیچ اتاقی در زباله‌دان یافت نشد"
 
 msgid "All Rooms"
-msgstr "All Rooms"
+msgstr "همه اتاق‌ها"
 
 msgid "New Room"
-msgstr "New Room"
+msgstr "اتاق جدید"
 
 msgid "Room Archives"
-msgstr "Room Archives"
+msgstr "آرشیو اتاق‌ها"
 
 msgid "Insert into room"
-msgstr "Insert into room"
+msgstr "وارد‌کردن در اتاق"
 
 msgid "Uploaded to this room"
-msgstr "Uploaded to this room"
+msgstr "بارگذاری‌شده در اتاق"
 
 msgid "Filter rooms list"
-msgstr "Filter rooms list"
+msgstr "فیلتر‌کردن"
 
 msgid "Rooms list navigation"
-msgstr "Rooms list navigation"
+msgstr "مرور"
 
 msgid "Rooms list"
-msgstr "Rooms list"
+msgstr "لیست اتاق‌ها"
 
 msgid "Room published"
-msgstr "Room published"
+msgstr "اتاق منتشر شد"
 
 msgid "Room published privately"
-msgstr "Room published privately"
+msgstr "اتاق خصوصی منتشر شد"
 
 msgid "Room reverted to draft"
-msgstr "Room reverted to draft"
+msgstr "اتاق پی‌نویس شد"
 
 msgid "Room scheduled"
-msgstr "Room scheduled"
+msgstr "زمان‌بندی اتاق"
 
 msgid "Room updated"
-msgstr "Room updated"
+msgstr "اتاق به‌روز شد"
 
 msgid "Moderator Code"
-msgstr "Moderator Code"
+msgstr "رمز مدیر"
 
 msgid "Viewer Code"
-msgstr "Viewer Code"
+msgstr "رمز شرکت‌کنندگان"
 
 msgid "Recordable"
-msgstr "Recordable"
+msgstr "ضبط فعال"
 
 msgid "true"
-msgstr "true"
+msgstr "بله"
 
 msgid "false"
-msgstr "false"
+msgstr "خیر"
 
 # Room description
 msgid "Join"
-msgstr "Join"
+msgstr "ملحق‌شدن"
 
 msgid "Wait for Moderator"
-msgstr "Wait for Moderator"
+msgstr "لطفا منتظر شروع جلسه باشید"
 
 # Recordings description
 msgid "Meeting"
-msgstr "Meeting"
+msgstr "جلسه/کلاس"
 
 msgid "Recording"
-msgstr "Recording"
+msgstr "فایل ضبط شده"
 
 msgid "Recordings"
-msgstr "Recordings"
+msgstr "فایل‌های ضبط شده"
 
 msgid "Manage"
-msgstr "Manage"
+msgstr "مدیریت"
 
 msgid "Expand recordings"
-msgstr "Expand recordings"
+msgstr "فایل‌های ضبط شده"
 
 msgid "Collapse recordings"
-msgstr "Collapse recordings"
+msgstr "فایل‌های ضبط شده"
 
 msgid "Statistics"
-msgstr "Statistics"
+msgstr "آمار"
 
 msgid "Presentation"
-msgstr "Presentation"
+msgstr "ارائه"
 
 msgid "Video"
-msgstr "Video"
+msgstr "ویدئو"
 
 msgid "Protected"
-msgstr "Protected"
+msgstr "خصوصی"
 
 msgid "Unprotected"
-msgstr "Unprotected"
+msgstr "عمومی"
 
 # Migration Error Messages
 msgid "Failed to import the room, %s."
@@ -206,24 +205,22 @@ msgstr "MeetingZ works best with the heartbeat API enabled. Please enable it."
 
 # Public strings
 msgid "Access Code"
-msgstr "Access Code"
+msgstr "رمز دسترسی"
 
 msgid "This room does not currently have any recordings."
-msgstr "This room does not currently have any recordings."
+msgstr "در حال حاضر فایل ضبط برای این اتاق وجود ندارد."
 
 msgid ""
 "The meeting has not started yet. You will be automatically redirected to the meeting when it "
 "starts."
 msgstr ""
-"The meeting has not started yet. You will be automatically redirected to the meeting when it "
-"starts."
+"این جلسه هنوز شروع نشده است. پس از شروع جلسه، به طور خودکار به آن وارد خواهید شد."
 
 msgid ""
 "The meeting has not started yet. Please wait for a moderator to start the meeting before "
 "joining."
 msgstr ""
-"The meeting has not started yet. Please wait for a moderator to start the meeting before "
-"joining."
+"این جلسه هنوز شروع نشده است. لطفا منتظر شروع جلسه باشید."
 
 msgid "The token: %s is not associated with a published room."
 msgstr "The token: %s is not associated with a published room."
@@ -239,10 +236,10 @@ msgstr "The room linked to this resource is not configured correctly."
 
 # Widget strings
 msgid "Room selection"
-msgstr "Room Selection"
+msgstr "انتخاب اتاق"
 
 msgid "Displays a MeetingZ login form."
-msgstr "Displays a MeetingZ login form."
+msgstr "نمایش صفحه لاگین میتینگـ.ز."
 
 msgid "There are no rooms in the selection."
-msgstr "There are no rooms in the selection."
+msgstr "اتاقی انتخاب نشده است."

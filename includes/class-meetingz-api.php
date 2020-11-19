@@ -21,6 +21,7 @@
  */
 class Meetingz_Api {
 
+    private static $cache_response = [];
 	/**
 	 * Create new meeting.
 	 *
@@ -172,21 +173,67 @@ class Meetingz_Api {
 		substr_replace( $meeting_ids, '', -1 );
 
 		$arr_params = array(
+			//'meetingID' => '02db5f1008a56864a6af2e8fca2ddb1921bf4931-50-66', //todo $meeting_ids,
 			'meetingID' => $meeting_ids,
 			'state'     => $state,
 		);
 
-		$url           = self::build_url( 'getRecordings', $arr_params );
-		$full_response = self::get_response( $url );
+		//########################  1  ################################
+        $url           = self::build_url( 'getSessions', $arr_params );
+        $full_response = self::get_response( $url );
+        if ( is_wp_error( $full_response ) ) {
+            return $recordings;
+        }
+        $response = self::response_to_xml( $full_response );
+        if ( property_exists( $response, 'sessions' ) ) {
+            $sessions = json_decode($response->sessions, true);
 
+            if($sessions && !empty($sessions)){
+                $list = [];
+                foreach ($sessions as $session) {
+                    $fday = userdate( strtotime($session['started_at'].' GMT'), 'Y-m-d  H:i');
+
+                    //$day = substr($session['started_at'].'', 0, 10);
+                    //$time = substr($session['started_at'].'', 11, 8);
+                    //$fday = bigbluebuttonbn_get_fa_date($day) . ' ' . $time;
+                    if(isset($list[$fday]) && $list[$fday]['realDuration'] > $session['realDuration']){
+                        continue;
+                    }
+
+                    $list[$fday] = $session;
+                }
+            }
+        }
+        foreach ($list as $day => $sess){
+            $sess = (object)$sess;
+            $sess->recordID = $sess->id;
+            $sess->metadata->{'recording-name'} = $sess->realDurationStr . " ({$sess->userCount} نفر)";
+            $sess->metadata->{'recording-description'} = $sess->comment;
+            $sess->startTime = userdate( strtotime($sess->started_at.' GMT'), 'Y-m-d  H:i:s');;
+            $sess->endTime = userdate( strtotime($sess->ended_at.' GMT'), 'Y-m-d  H:i:s');;
+            $sess->playback->format[] = (object)[
+                'type' => 'presentation',
+                'url' => $sess->record_url,
+                'url0' => $sess->record0_url,
+            ];
+            $sess->protected = 'true';
+            $sess->published = 'true';
+            $sess->state = 'published';
+
+            $recordings[] = $sess;
+        }
+
+
+		//########################  2  ################################
+		/*$url           = self::build_url( 'getRecordings', $arr_params );
+		$full_response = self::get_response( $url );
 		if ( is_wp_error( $full_response ) ) {
 			return $recordings;
 		}
-
 		$response = self::response_to_xml( $full_response );
 		if ( property_exists( $response, 'recordings' ) && property_exists( $response->recordings, 'recording' ) ) {
-			$recordings = $response->recordings->recording;
-		}
+			$recordings[] = $response->recordings->recording;
+		}*/
 
 		return $recordings;
 	}
@@ -362,7 +409,12 @@ class Meetingz_Api {
 	 * @return  Array|WP_Error  $response   Server response in array format.
 	 */
 	private static function get_response( $url ) {
+	    if( isset(self::$cache_response[$url])) {
+            return self::$cache_response[$url];
+        }
+
 		$result = wp_remote_get( esc_url_raw( $url ) );
+        self::$cache_response[$url] = $result;
 		return $result;
 	}
 
