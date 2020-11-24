@@ -170,7 +170,7 @@ class Meetingz_Api {
 			$meeting_ids .= get_post_meta( sanitize_text_field( $rid ), 'mtz-room-meeting-id', true ) . ',';
 		}
 
-		substr_replace( $meeting_ids, '', -1 );
+        $meeting_ids = substr_replace( $meeting_ids, '', -1 );
 
 		$arr_params = array(
 			//'meetingID' => '02db5f1008a56864a6af2e8fca2ddb1921bf4931-50-66', //todo $meeting_ids,
@@ -226,15 +226,26 @@ class Meetingz_Api {
 
 
 		//########################  2  ################################
-		/*$url           = self::build_url( 'getRecordings', $arr_params );
+		$url           = self::build_url( 'getRecordings', $arr_params );
 		$full_response = self::get_response( $url );
 		if ( is_wp_error( $full_response ) ) {
 			return $recordings;
 		}
 		$response = self::response_to_xml( $full_response );
 		if ( property_exists( $response, 'recordings' ) && property_exists( $response->recordings, 'recording' ) ) {
-			$recordings[] = $response->recordings->recording;
-		}*/
+			foreach ($response->recordings->recording as $rec) {
+                $sess = (object)$rec;
+                $sess->metadata->{'recording-name'} = $sess->name ?? '-';
+                $sess->name = (int)(((int)$sess->endTime - (int)$sess->startTime)/(60*1000)) . "m ({$sess->participants} نفر)";
+                $sess->metadata->{'recording-description'} = $sess->comment;
+                $sess->startTime = userdate( (int)$sess->startTime/1000, 'Y-m-d  H:i:s');
+                $sess->endTime = userdate( (int)$sess->endTime/1000, 'Y-m-d  H:i:s');
+                $sess->playback->format->url0 = $sess->playback->format->url;
+                $sess->playback->format->url = '';
+
+                $recordings[] = $sess;
+            }
+		}
 
 		return $recordings;
 	}
