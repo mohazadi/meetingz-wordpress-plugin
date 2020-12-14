@@ -26,10 +26,10 @@ class Meetingz_Api {
 	 * Create new meeting.
 	 *
 	 * @since   3.0.0
-	 * 
+	 *
 	 * @param   Integer $room_id            Custom post id of the room the user is creating a meeting for.
 	 * @param   String  $logout_url         URL to return to after logging out.
-	 * 
+	 *
 	 * @return  Integer $return_code|404    HTML response of the meetingz server.
 	 */
 	public static function create_meeting( $room_id, $logout_url ) {
@@ -82,7 +82,7 @@ class Meetingz_Api {
 	 * @param   String  $username   Full name of the user trying to join the room.
 	 * @param   String  $password   Entry code of the meeting that the user is attempting to join with.
 	 * @param   String  $logout_url URL to return to after logging out.
-	 * 
+	 *
 	 * @return  String  $url|null   URL to enter the meeting.
 	 */
 	public static function get_join_meeting_url( $room_id, $username, $password, $logout_url = null) {
@@ -170,15 +170,16 @@ class Meetingz_Api {
 			$meeting_ids .= get_post_meta( sanitize_text_field( $rid ), 'mtz-room-meeting-id', true ) . ',';
 		}
 
-		substr_replace( $meeting_ids, '', -1 );
+        $meeting_ids = substr_replace( $meeting_ids, '', -1 );
 
 		$arr_params = array(
-			//'meetingID' => '02db5f1008a56864a6af2e8fca2ddb1921bf4931-50-66', //todo $meeting_ids,
-			'meetingID' => $meeting_ids,
+            //	'meetingID' => '02db5f1008a56864a6af2e8fca2ddb1921bf4931-50-66', //todo $meeting_ids,
+            'meetingID' => $meeting_ids,
 			'state'     => $state,
 		);
 
 		//########################  1  ################################
+        $list = [];
         $url           = self::build_url( 'getSessions', $arr_params );
         $full_response = self::get_response( $url );
         if ( is_wp_error( $full_response ) ) {
@@ -189,7 +190,6 @@ class Meetingz_Api {
             $sessions = json_decode($response->sessions, true);
 
             if($sessions && !empty($sessions)){
-                $list = [];
                 foreach ($sessions as $session) {
                     $fday = userdate( strtotime($session['started_at'].' GMT'), 'Y-m-d  H:i');
 
@@ -207,12 +207,12 @@ class Meetingz_Api {
         foreach ($list as $day => $sess){
             $sess = (object)$sess;
             $sess->recordID = $sess->id;
-            $sess->metadata->{'recording-name'} = $sess->name ?? '-';
+            @$sess->metadata->{'recording-name'} = $sess->name ?? '-';
             $sess->name = $sess->realDurationStr . " ({$sess->userCount} نفر)";
-            $sess->metadata->{'recording-description'} = $sess->comment;
+            @$sess->metadata->{'recording-description'} = $sess->comment;
             $sess->startTime = userdate( strtotime($sess->started_at.' GMT'), 'Y-m-d  H:i:s');;
             $sess->endTime = userdate( strtotime($sess->ended_at.' GMT'), 'Y-m-d  H:i:s');;
-            $sess->playback->format[] = (object)[
+            @$sess->playback->format[] = (object)[
                 'type' => 'presentation',
                 'url' => $sess->record_url,
                 'url0' => $sess->record0_url,
