@@ -61,12 +61,16 @@
 						<div id="mtz-recording-links-block-<?php echo $recording->recordID; ?>" class="mtz-recording-link-block" style="<?php echo ( $recording->published == 'false' ? 'display:none;' : '' ); ?>">
 							<?php foreach ( $recording->playback->format as $format ) { ?>
 								<?php if ( $format->type == $default_mtz_recording_format || $view_extended_recording_formats ) { ?>
+								    <?php if ( !empty($format->url) ) { ?>
 									<div class="mtz-recording-link">
 										<a target="_blank" href="<?php echo $format->url; ?>">ضبط ابری</a>
 									</div>
+                                    <?php } ?>
+                                    <?php if ( !empty($format->url0) ) { ?>
                                     <div class="mtz-recording-link">
 										<a target="_blank" href="<?php echo $format->url0; ?>">ضبط عادی</a>
 									</div>
+                                    <?php } ?>
 								<?php } ?>
 							<?php } ?>
 						</div>
