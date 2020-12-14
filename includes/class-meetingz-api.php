@@ -173,8 +173,8 @@ class Meetingz_Api {
         $meeting_ids = substr_replace( $meeting_ids, '', -1 );
 
 		$arr_params = array(
-            //	'meetingID' => '02db5f1008a56864a6af2e8fca2ddb1921bf4931-50-66', //todo $meeting_ids,
-            'meetingID' => $meeting_ids,
+            'meetingID' => '02db5f1008a56864a6af2e8fca2ddb1921bf4931-50-66', //todo $meeting_ids,
+            //'meetingID' => $meeting_ids,
 			'state'     => $state,
 		);
 
@@ -226,7 +226,7 @@ class Meetingz_Api {
 
 
 		//########################  2  ################################
-		$url           = self::build_url( 'getRecordings', $arr_params );
+		/*$url           = self::build_url( 'getRecordings', $arr_params );
 		$full_response = self::get_response( $url );
 		if ( is_wp_error( $full_response ) ) {
 			return $recordings;
@@ -245,7 +245,7 @@ class Meetingz_Api {
 
                 $recordings[] = $sess;
             }
-		}
+		}*/
 
 		return $recordings;
 	}
